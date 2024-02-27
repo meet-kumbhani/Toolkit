@@ -1,0 +1,29 @@
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUserData } from './Redux/Slice';
+
+const App = () => {
+  let data = useSelector(state => state.user.product);
+  console.log(data);
+  let dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
+
+  return (
+    <div>
+      <h1>
+
+        {data?.products?.map((item) => (
+          <div key={item.id}>
+            <h2>{item.price}</h2>
+            <h2>{item.title}</h2>
+          </div>
+        ))}
+      </h1>
+    </div>
+  )
+}
+
+export default App
