@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Listurl } from "../Config/Urls";
+import { Carturl, Listurl } from "../Config/Urls";
+import ControlPointIcon from "@mui/icons-material/ControlPoint";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 const Productdetails = () => {
   const [productdata, setProductdata] = useState([]);
+  const [addtocart, setAddtocart] = useState(false);
   let { id } = useParams();
 
   useEffect(() => {
@@ -17,6 +20,18 @@ const Productdetails = () => {
         console.log(err);
       });
   }, [id]);
+
+  let handelcart = () => {
+    axios
+      .post(Carturl, { ...productdata })
+      .then(() => {
+        setAddtocart(true);
+        productdata((prev) => [...prev, { ...productdata }]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       {productdata ? (
@@ -32,10 +47,28 @@ const Productdetails = () => {
                     height="500px"
                   />
                   <div className="buttons mt-4">
-                    <button className="buynow-btn me-2">Buy Now</button>
-                    <button className="cart-btn">Add To Cart</button>
+                    {addtocart ? (
+                      <>
+                        <button className="buynow-btn me-2">Buy Now</button>
 
-                    {/* <ControlPointIcon fontSize="small" className="ms-2" /> */}
+                        <h5 className="d-flex align-items-center">
+                          Quantity:-
+                          <RemoveCircleOutlineIcon
+                            fontSize="small"
+                            className="me-2"
+                          />
+                          {productdata.quantity}
+                          <ControlPointIcon fontSize="small" className="ms-2" />
+                        </h5>
+                      </>
+                    ) : (
+                      <>
+                        <button className="buynow-btn me-2">Buy Now</button>
+                        <button className="cart-btn" onClick={handelcart}>
+                          Add To Cart
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

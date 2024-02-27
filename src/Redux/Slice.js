@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Carturl } from '../Config/Urls';
 
 const initialState = {
      product: [],
@@ -8,14 +9,33 @@ const initialState = {
 };
 
 export const fetchUserData = createAsyncThunk('product/fetchUserData', async () => {
-     return await axios.get("https://dummyjson.com/products").then((res) => {
+     return (await axios.get(Carturl).then((res) => {
           return res.data
      }).catch((err) => {
           console.log(err);
-          // return Promise.reject(err)
-     });
+     }),
+          await axios.delete(`${Carturl}/${800}`).then((responce) => {
+               return axios.get(Carturl).then((responce) => {
+                    return responce.data
+               }).catch((err) => {
+                    console.log(err);
+               });
+          }).catch((err) => {
 
+               console.log(err);
+          })
+     )
 
+});
+
+export const updateQuantity = createAsyncThunk('product/updateQuantity', async ({ productId, quantity }) => {
+     try {
+          const response = await axios.patch(`${Carturl}/${productId}`, { quantity });
+          return response.data;
+     } catch (error) {
+          console.log(error);
+          throw error;
+     }
 });
 
 const Slice = createSlice({
@@ -35,6 +55,12 @@ const Slice = createSlice({
                .addCase(fetchUserData.rejected, (state, action) => {
                     state.loading = false;
                     state.error = action.error.message;
+               })
+               .addCase(updateQuantity.fulfilled, (state, action) => {
+                    const updatedProductIndex = state.product.findIndex(product => product.id === action.payload.id);
+                    if (updatedProductIndex !== -1) {
+                         state.product[updatedProductIndex].quantity = action.payload.quantity;
+                    }
                });
      },
 });
