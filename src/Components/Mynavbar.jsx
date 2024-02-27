@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { fetchUserData } from "../Redux/Slice";
+import { useDispatch, useSelector } from "react-redux";
 
-const Mynavbar = ({ totalitems }) => {
+const Mynavbar = () => {
+  // let data = useSelector((state) => state.user.product);
+  // let length = data.length;
+  // let dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchUserData());
+  // }, [dispatch]);
   return (
     <Navbar expand="lg" className="bg-body-tertiary px-2">
       <Navbar.Brand>
@@ -28,7 +37,7 @@ const Mynavbar = ({ totalitems }) => {
         </Nav>
         <Link to="/cart" className="nav-link">
           <span className="position-absolute translate-middle badge rounded-pill bg-danger">
-            {totalitems}
+            {0}
           </span>
           <AddShoppingCartIcon /> Cart
         </Link>

@@ -28,9 +28,29 @@ export const fetchUserData = createAsyncThunk('product/fetchUserData', async () 
 
 });
 
+export const removeFromCart = createAsyncThunk('product/removeFromCart', async (productId) => {
+     try {
+          await axios.delete(`${Carturl} / ${productId}`);
+          return productId;
+     } catch (error) {
+          console.log(error);
+          throw error;
+     }
+});
+
 export const updateQuantity = createAsyncThunk('product/updateQuantity', async ({ productId, quantity }) => {
      try {
           const response = await axios.patch(`${Carturl}/${productId}`, { quantity });
+          return response.data;
+     } catch (error) {
+          console.log(error);
+          throw error;
+     }
+});
+
+export const addToCart = createAsyncThunk('product/addToCart', async (productData) => {
+     try {
+          const response = await axios.post(Carturl, productData);
           return response.data;
      } catch (error) {
           console.log(error);
@@ -61,6 +81,12 @@ const Slice = createSlice({
                     if (updatedProductIndex !== -1) {
                          state.product[updatedProductIndex].quantity = action.payload.quantity;
                     }
+               })
+               .addCase(removeFromCart.fulfilled, (state, action) => {
+                    state.product = state.product.filter(item => item.id !== action.payload);
+               })
+               .addCase(addToCart.fulfilled, (state, action) => {
+                    state.product = action.payload;
                });
      },
 });

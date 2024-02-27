@@ -4,11 +4,15 @@ import { useParams } from "react-router-dom";
 import { Carturl, Listurl } from "../Config/Urls";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, updateQuantity } from "../Redux/Slice";
 
 const Productdetails = () => {
   const [productdata, setProductdata] = useState([]);
   const [addtocart, setAddtocart] = useState(false);
+  const [quantity, setQuantity] = useState(1);
   let { id } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
@@ -22,20 +26,28 @@ const Productdetails = () => {
   }, [id]);
 
   let handelcart = () => {
+    dispatch(addToCart(productdata));
+    setAddtocart(true);
+  };
+
+  const handleQuantityChange = (newQuantity) => {
+    updateQuantity(productdata.id, newQuantity);
+    setQuantity(newQuantity);
     axios
-      .post(Carturl, { ...productdata })
-      .then(() => {
-        setAddtocart(true);
-        productdata((prev) => [...prev, { ...productdata }]);
+      .patch(`${Carturl}/${id}`, { quantity: newQuantity })
+      .then((response) => {
+        console.log("qty updated cart", response.data);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.error("qty error cart", error);
       });
   };
+
   return (
     <>
       {productdata ? (
         <>
+          {quantity}
           <div className="container mb-3">
             <div className="row">
               <div className="col-md-12 col-lg-6 col-sm-12 mt-5">
@@ -51,15 +63,29 @@ const Productdetails = () => {
                       <>
                         <button className="buynow-btn me-2">Buy Now</button>
 
-                        <h5 className="d-flex align-items-center">
+                        {/* <h5 className="d-flex align-items-center">
                           Quantity:-
                           <RemoveCircleOutlineIcon
                             fontSize="small"
                             className="me-2"
                           />
-                          {productdata.quantity}
+                          {quantity}
                           <ControlPointIcon fontSize="small" className="ms-2" />
-                        </h5>
+                        </h5> */}
+                        <h6 className="d-flex align-items-center quntity-btn">
+                          Quantity:-
+                          <RemoveCircleOutlineIcon
+                            fontSize="small"
+                            className="me-2"
+                            onClick={() => handleQuantityChange(quantity - 1)}
+                          />
+                          {quantity}
+                          <ControlPointIcon
+                            fontSize="small"
+                            className="ms-2"
+                            onClick={() => handleQuantityChange(quantity + 1)}
+                          />
+                        </h6>
                       </>
                     ) : (
                       <>
