@@ -30,17 +30,12 @@ const Productdetails = () => {
     setAddtocart(true);
   };
 
-  const handleQuantityChange = (newQuantity) => {
-    updateQuantity(productdata.id, newQuantity);
+  const Quantityupdate = (newQuantity) => {
     setQuantity(newQuantity);
-    axios
-      .patch(`${Carturl}/${id}`, { quantity: newQuantity })
-      .then((response) => {
-        console.log("qty updated cart", response.data);
-      })
-      .catch((error) => {
-        console.error("qty error cart", error);
-      });
+    setAddtocart(true);
+    dispatch(
+      updateQuantity({ productId: productdata.id, quantity: newQuantity })
+    );
   };
 
   return (
@@ -63,29 +58,20 @@ const Productdetails = () => {
                       <>
                         <button className="buynow-btn me-2">Buy Now</button>
 
-                        {/* <h5 className="d-flex align-items-center">
+                        <h5 className="d-flex align-items-center">
                           Quantity:-
                           <RemoveCircleOutlineIcon
                             fontSize="small"
                             className="me-2"
-                          />
-                          {quantity}
-                          <ControlPointIcon fontSize="small" className="ms-2" />
-                        </h5> */}
-                        <h6 className="d-flex align-items-center quntity-btn">
-                          Quantity:-
-                          <RemoveCircleOutlineIcon
-                            fontSize="small"
-                            className="me-2"
-                            onClick={() => handleQuantityChange(quantity - 1)}
+                            onClick={() => Quantityupdate(quantity - 1)}
                           />
                           {quantity}
                           <ControlPointIcon
                             fontSize="small"
                             className="ms-2"
-                            onClick={() => handleQuantityChange(quantity + 1)}
+                            onClick={() => Quantityupdate(quantity + 1)}
                           />
-                        </h6>
+                        </h5>
                       </>
                     ) : (
                       <>
