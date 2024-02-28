@@ -28,10 +28,10 @@ export const fetchUserData = createAsyncThunk('product/fetchUserData', async () 
 
 });
 
-export const removeFromCart = createAsyncThunk('product/removeFromCart', async (productId) => {
+export const addToCart = createAsyncThunk('product/addToCart', async (productData) => {
      try {
-          await axios.delete(`${Carturl} / ${productId}`);
-          return productId;
+          const response = await axios.post(Carturl, productData);
+          return response.data;
      } catch (error) {
           console.log(error);
           throw error;
@@ -48,10 +48,10 @@ export const updateQuantity = createAsyncThunk('product/updateQuantity', async (
      }
 });
 
-export const addToCart = createAsyncThunk('product/addToCart', async (productData) => {
+export const removeFromCart = createAsyncThunk('product/removeFromCart', async (productId) => {
      try {
-          const response = await axios.post(Carturl, productData);
-          return response.data;
+          await axios.delete(`${Carturl}/${productId}`);
+          return productId;
      } catch (error) {
           console.log(error);
           throw error;
@@ -76,6 +76,9 @@ const Slice = createSlice({
                     state.loading = false;
                     state.error = action.error.message;
                })
+               .addCase(addToCart.fulfilled, (state, action) => {
+                    state.product = action.payload;
+               })
                .addCase(updateQuantity.fulfilled, (state, action) => {
                     const updatedProductIndex = state.product.findIndex(product => product.id === action.payload.id);
                     console.log(action, "<---");
@@ -86,9 +89,7 @@ const Slice = createSlice({
                .addCase(removeFromCart.fulfilled, (state, action) => {
                     state.product = state.product.filter(item => item.id !== action.payload);
                })
-               .addCase(addToCart.fulfilled, (state, action) => {
-                    state.product = action.payload;
-               });
+
      },
 });
 

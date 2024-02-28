@@ -1,7 +1,7 @@
 {
   "phones": [
     {
-      "id": "1",
+      "id": 1,
       "name": "iPhone X",
       "model": "S20-200",
       "price": 44999,
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Samsung Galaxy S20",
       "model": "S20-200",
       "quantity": 1,
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Apple Watch Ultra",
       "model": "Ultra A8+",
       "quantity": 1,
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "iPhone 13",
       "model": "IP13-400",
       "quantity": 1,
@@ -69,7 +69,7 @@
       ]
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Pixel 6",
       "model": "PXL6-500",
       "quantity": 1,
@@ -86,7 +86,7 @@
       ]
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "Boult Cosmic",
       "model": "R 1.3 HD",
       "quantity": 1,
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Sony Xperia 5",
       "model": "X5-700",
       "quantity": 1,
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "id": "8",
+      "id": 8,
       "name": "Samsung",
       "model": "Watch 4",
       "quantity": 1,
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "id": "9",
+      "id": 9,
       "name": "OnePlus",
       "model": "Bullets Wireless Z2",
       "quantity": 1,
@@ -154,7 +154,7 @@
       ]
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "Xiaomi Mi 11",
       "model": "MI11-1000",
       "quantity": 1,
@@ -171,7 +171,7 @@
       ]
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "Fire-Boltt",
       "model": "Supernova 1.78",
       "quantity": 1,
@@ -188,7 +188,7 @@
       ]
     },
     {
-      "id": "12",
+      "id": 12,
       "name": "Google Pixel 5a",
       "model": "P5a-1200",
       "quantity": 1,
@@ -205,7 +205,7 @@
       ]
     },
     {
-      "id": "13",
+      "id": 13,
       "name": "Boat",
       "model": "Rockerz 110",
       "quantity": 1,
@@ -222,7 +222,7 @@
       ]
     },
     {
-      "id": "14",
+      "id": 14,
       "name": "OnePlus Nord",
       "model": "OPN-1400",
       "quantity": 1,
@@ -239,7 +239,7 @@
       ]
     },
     {
-      "id": "15",
+      "id": 15,
       "name": "Motorola Edge",
       "model": "ME-1500",
       "quantity": 1,
@@ -256,7 +256,7 @@
       ]
     },
     {
-      "id": "16",
+      "id": 16,
       "name": "Apple Airpods",
       "model": "Airpods Pro",
       "quantity": 1,
@@ -273,7 +273,7 @@
       ]
     },
     {
-      "id": "17",
+      "id": 17,
       "name": "Redmi Note 10",
       "model": "RN10-1700",
       "quantity": 1,
@@ -290,7 +290,7 @@
       ]
     },
     {
-      "id": "18",
+      "id": 18,
       "name": "Chaebol",
       "model": "Gaming Pro X90",
       "quantity": 1,
@@ -307,7 +307,7 @@
       ]
     },
     {
-      "id": "19",
+      "id": 19,
       "name": "iPhone 12 Mini",
       "model": "IP12M-1900",
       "quantity": 1,
@@ -324,7 +324,7 @@
       ]
     },
     {
-      "id": "20",
+      "id": 20,
       "name": "JBL",
       "model": "BT 5.3LE",
       "quantity": 1,
@@ -341,7 +341,7 @@
       ]
     },
     {
-      "id": "21",
+      "id": 21,
       "name": "Apple",
       "model": "OP8T-2100",
       "quantity": 1,
@@ -358,7 +358,7 @@
       ]
     },
     {
-      "id": "22",
+      "id": 22,
       "name": "Xiaomi Redmi 9",
       "model": "R9-2200",
       "quantity": 1,
@@ -375,7 +375,7 @@
       ]
     },
     {
-      "id": "23",
+      "id": 23,
       "name": "LG G8 ThinQ",
       "model": "G8-2300",
       "quantity": 1,
@@ -392,7 +392,7 @@
       ]
     },
     {
-      "id": "24",
+      "id": 24,
       "name": "Fire-Boltt",
       "model": "Starlight 2.01",
       "quantity": 1,
@@ -409,7 +409,7 @@
       ]
     },
     {
-      "id": "25",
+      "id": 25,
       "name": "Samsung Galaxy A32",
       "model": "A32-2500",
       "quantity": 1,
@@ -426,14 +426,14 @@
       ]
     },
     {
-      "id": "26",
+      "id": 26,
       "name": "Skywings",
       "model": "M-19",
       "quantity": 1,
       "price": 499,
       "storage": "Deep Bass",
       "image": "https://rukminim2.flixcart.com/image/416/416/xif0q/headphone/n/y/e/m19-skywings-original-imagxkzyfhuyhkfz.jpeg?q=70&crop=false",
-      "fullname": "Skywings M-19 (Midnight Blue, Deep Bass)",
+      "fullname": "Skywings M-19 (Midnigt lue, Deep Bass)",
       "packaging_fee": "+ ₹50 Secured Packaging Fee",
       "offers": [
         "Bank Offer: 5% Cashback on Flipkart Axis Bank Card (*T&C*)",
@@ -443,7 +443,7 @@
       ]
     },
     {
-      "id": "27",
+      "id": 27,
       "name": "Google Pixel 3a",
       "model": "P3a-2700",
       "quantity": 1,
@@ -460,7 +460,7 @@
       ]
     },
     {
-      "id": "28",
+      "id": 28,
       "name": "Blaupunkt",
       "model": "BTW12",
       "quantity": 1,
@@ -478,14 +478,14 @@
     },
 
     {
-      "id": "29",
+      "id": 29,
       "name": "SanDisk Cruzer Glide",
       "model": "SDCG-001",
       "storage": "64GB",
       "quantity": 1,
       "price": 599,
       "image": "https://rukminim2.flixcart.com/image/416/416/kjabs7k0-0/pendrive/pendrive/c/d/j/cruzer-blade-usb-flash-drive-2-0-pen-drive-32-gb-sandisk-original-imafyw2fxzek9gmu.jpeg?q=70&crop=false",
-      "fullname": "SanDisk Cruzer Glide USB Flash Drive (Black, 64GB)",
+      "fullname": "SanDisk Cruzer Glide UB lash Drive (Black, 64GB)",
       "packaging_fee": "+ ₹20 Secured Packaging Fee",
       "offers": [
         "Bank Offer: 5% Cashback on Flipkart Axis Bank Card (*T&C*)",
@@ -495,7 +495,7 @@
       ]
     },
     {
-      "id": "30",
+      "id": 30,
       "name": "HP v236w",
       "model": "HPV-002",
       "storage": "32GB",
@@ -512,7 +512,7 @@
       ]
     },
     {
-      "id": "31",
+      "id": 31,
       "name": "Samsung Bar Plus",
       "model": "SBBP-003",
       "storage": "128GB",
@@ -529,7 +529,7 @@
       ]
     },
     {
-      "id": "32",
+      "id": 32,
       "name": "Kingston DataTraveler",
       "model": "KDT-004",
       "storage": "16GB",
@@ -546,7 +546,7 @@
       ]
     },
     {
-      "id": "33",
+      "id": 33,
       "name": "Sony Microvault",
       "model": "SMV-005",
       "storage": "32GB",
@@ -563,7 +563,7 @@
       ]
     },
     {
-      "id": "34",
+      "id": 34,
       "name": "Strontium Nitro Plus",
       "model": "SNP-006",
       "storage": "64GB",
@@ -580,7 +580,7 @@
       ]
     },
     {
-      "id": "35",
+      "id": 35,
       "name": "Transcend JetFlash",
       "model": "TJF-007",
       "storage": "128GB",
@@ -597,7 +597,7 @@
       ]
     },
     {
-      "id": "36",
+      "id": 36,
       "name": "Sandisk Ultra Dual",
       "model": "SUD-008",
       "storage": "64GB",
@@ -614,7 +614,7 @@
       ]
     },
     {
-      "id": "37",
+      "id": 37,
       "name": "HP x740w",
       "model": "HPX-009",
       "storage": "32GB",
@@ -631,7 +631,7 @@
       ]
     },
     {
-      "id": "38",
+      "id": 38,
       "name": "Kingston DT",
       "model": "KDT-010",
       "storage": "64GB",
@@ -648,7 +648,7 @@
       ]
     },
     {
-      "id": "39",
+      "id": 39,
       "name": "SanDisk Ultra Flair",
       "model": "SDUF-011",
       "storage": "128GB",
@@ -665,7 +665,7 @@
       ]
     },
     {
-      "id": "40",
+      "id": 40,
       "name": "ADATA Classic",
       "model": "AC-012",
       "storage": "32GB",

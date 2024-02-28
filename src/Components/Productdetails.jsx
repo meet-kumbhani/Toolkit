@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Listurl } from "../Config/Urls";
+import { Carturl, Listurl } from "../Config/Urls";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { useDispatch } from "react-redux";
@@ -25,6 +25,22 @@ const Productdetails = () => {
       });
   }, [id]);
 
+  useEffect(() => {
+    axios
+      .get(`${Carturl}/${id}`)
+      .then((res) => {
+        if (res.data && res.data.quantity > 0) {
+          setAddtocart(true);
+          setQuantity(res.data.quantity);
+        } else {
+          setAddtocart(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
+
   let handelcart = () => {
     dispatch(addToCart(productdata));
     setAddtocart(true);
@@ -32,7 +48,6 @@ const Productdetails = () => {
 
   const Quantityupdate = (newQuantity) => {
     setQuantity(newQuantity);
-    setAddtocart(true);
     dispatch(
       updateQuantity({ productId: productdata.id, quantity: newQuantity })
     );
@@ -42,7 +57,6 @@ const Productdetails = () => {
     <>
       {productdata ? (
         <>
-          {quantity}
           <div className="container mb-3">
             <div className="row">
               <div className="col-md-12 col-lg-6 col-sm-12 mt-5">
