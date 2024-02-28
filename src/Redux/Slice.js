@@ -78,6 +78,7 @@ const Slice = createSlice({
                })
                .addCase(updateQuantity.fulfilled, (state, action) => {
                     const updatedProductIndex = state.product.findIndex(product => product.id === action.payload.id);
+                    console.log(action, "<---");
                     if (updatedProductIndex !== -1) {
                          state.product[updatedProductIndex].quantity = action.payload.quantity;
                     }
